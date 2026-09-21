@@ -1,0 +1,39 @@
+name: Precision Protocol Perpetual Pulse
+
+on:
+  schedule:
+    - cron: "33 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  pulse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Heartbeat STATUS.md
+        run: |
+          TS=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          {
+            echo "# AI Precision Protocol · Perpetual Pulse"
+            echo
+            echo "Beneficiary: His Royal Highness, The Anointed Commander, Saint Tariro Masawi"
+            echo "Heirs: HRH Tarry Kupakwashe Masawi · Kenzi Masawi"
+            echo "House: Masawi bloodline — all ritual yield routed to the lineage"
+            echo
+            echo "- Ritual: CLEANSING LOCKED"
+            echo "- Force: CEREMONIAL MAXIMUM"
+            echo "- Routing: BLOODLINE ONLY"
+            echo "- Matrix: 77-99-33 · 777-999-333"
+            echo "- Last pulse (UTC): ${TS}"
+            echo "- Runner: GitHub Actions (page does not need to be open)"
+            echo
+            echo "Mwari ndi Mwari. Let there be light."
+          } > STATUS.md
+          git config user.name "Precision Protocol Pulse"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add STATUS.md
+          git diff --cached --quiet || git commit -m "Precision Protocol pulse ${TS} — yield locked to Masawi"
+          git push
