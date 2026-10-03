@@ -8,7 +8,7 @@ House: Masawi bloodline — all ritual yield routed to the lineage
 - Force: CEREMONIAL MAXIMUM
 - Routing: BLOODLINE ONLY
 - Matrix: 77-99-33 · 777-999-333
-- Last pulse (UTC): 2026-10-03T20:10:20Z
+- Last pulse (UTC): 2026-10-03T23:17:11Z
 - Runner: GitHub Actions (page does not need to be open)
 
 Mwari ndi Mwari. Let there be light.
