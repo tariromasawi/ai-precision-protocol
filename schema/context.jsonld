@@ -1,0 +1,17 @@
+{
+  "@context": {
+    "@vocab": "https://tariromasawi.github.io/ai-precision-protocol/schema/ns#",
+    "schema": "https://schema.org/",
+    "name": "schema:name",
+    "version": "schema:version",
+    "author": "schema:author",
+    "MCCP": "Protocol",
+    "micro_cells": "microCell",
+    "semantic_attractors": "attractor",
+    "hash": "declaredFingerprint",
+    "embedding": "declaredEmbedding",
+    "temporal_band": "temporalBand",
+    "domains": "domain",
+    "abstraction": "abstractionLayer"
+  }
+}

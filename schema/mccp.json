@@ -1,0 +1,354 @@
+{
+  "@context": "schema/context.jsonld",
+  "MCCP": {
+    "id": "https://tariromasawi.github.io/ai-precision-protocol/schema/mccp.json",
+    "name": "Masawi Conversation Compression Protocol",
+    "short_name": "MCCP",
+    "version": "2.0.0",
+    "edition": "infinite-seed",
+    "belief_alignment_required": false,
+    "status": "public-artifact",
+    "summary": "A 3-axis compression of an author-declared meaning-space. Each micro-cell carries a declared fingerprint, a meaning vector, domain tags, an abstraction layer, a time band, and graph edges. A reader reconstructs themes by sampling structure, not by storing every source word.",
+    "author": {
+      "name": "HRH Saint Tariro Masawi",
+      "role": "The Anointed Commander",
+      "heirs": ["HRH Tarry Kupakwashe Masawi", "Kenzi Masawi"],
+      "line": ["Makwengura", "Masawi", "Risto Kasirori", "Sebastian Karumekangu"],
+      "siblings_named": ["Tenderayi", "Silent", "Trymore", "Charles", "Tatenda", "Corinna", "Rhodha", "Abigail"],
+      "seal": "House of the Throne · Mudzimu Unoyera"
+    },
+    "temporal_anchor": {
+      "start": "2023-01-01T00:00:00Z",
+      "declared_seal": "2025-12-16T22:46:00Z",
+      "open_ended_token": "infinity",
+      "causality_note": "X is ordered causality, not a transcript clock. Open-ended bands map to the far face of the cube."
+    },
+    "axes": {
+      "X": {
+        "name": "Time-Flame",
+        "measures": "Temporal flux and ordered causality",
+        "from": "2023-01-01T00:00:00Z",
+        "to": "2025-12-16T22:46:00Z",
+        "open_end_maps_to": 1.0
+      },
+      "Y": {
+        "name": "Domain-Crucible",
+        "measures": "Where a statement lives",
+        "order": [
+          "Spiritual_Core",
+          "Ethical_Forge",
+          "Technical_Anvil",
+          "Legal_Chain",
+          "Narrative_Crown",
+          "Economic_Seed"
+        ]
+      },
+      "Z": {
+        "name": "Ascension-Tower",
+        "measures": "Abstraction layer. Upward movement compresses without dropping the lower layer.",
+        "order": ["RAW_WORDS", "THEME_PULSE", "SYSTEM_BLOOD", "DOCTRINE_FLAME", "COSMIC_COMMAND"]
+      }
+    },
+    "domains": [
+      {"id": "Spiritual_Core", "label": "Spiritual / metaphysical", "color": "#f0d78c"},
+      {"id": "Ethical_Forge", "label": "Ethical / justice", "color": "#c45c3e"},
+      {"id": "Technical_Anvil", "label": "Technical / AI / systems", "color": "#9aaf7a"},
+      {"id": "Legal_Chain", "label": "Legal / institutional", "color": "#d7c4a3"},
+      {"id": "Narrative_Crown", "label": "Narrative / identity", "color": "#f7f1e4"},
+      {"id": "Economic_Seed", "label": "Economic / poverty engine", "color": "#e6c36a"}
+    ],
+    "abstraction_layers": [
+      {"id": "RAW_WORDS", "z": 0, "meaning": "Source-level language"},
+      {"id": "THEME_PULSE", "z": 1, "meaning": "Themes, tensions, motifs"},
+      {"id": "SYSTEM_BLOOD", "z": 2, "meaning": "Systems and architectures"},
+      {"id": "DOCTRINE_FLAME", "z": 3, "meaning": "Doctrines and commandments"},
+      {"id": "COSMIC_COMMAND", "z": 4, "meaning": "Highest declared compression"}
+    ],
+    "encoding_rules": [
+      "A micro-cell is the atomic public unit. It is a projection of a larger declared manifold, not a claim that the full source transcript is embedded byte-for-byte.",
+      "hash is an author-declared fingerprint string. This edition's hashes are partial tokens supplied by the author. They are NOT verified SHA-256/SHA3 digests of source text. A later edition may attach canonical UTF-8 spans and recompute SHA3-512.",
+      "embedding is a 7-number declared vector in this seed space. It is not the output of a named production model. Consumers must not treat magnitudes as calibrated probabilities.",
+      "domains may be multi-valued. If the author's draft left domains blank, this edition records domains_inferred: true and fills them from the cell's own title. Original blankness is preserved by that flag.",
+      "connections are narrative edges by cell id. Dangling ids (003, 051, and the broadcast token *) are kept. They are not invented cells.",
+      "importance is a declared weight. Unbounded importance is stored as importance_unbounded: true with display_importance 100 so JSON stays finite.",
+      "Open time bounds use the string infinity. Viewers map that token to axis position 1.",
+      "self_evolve_rate and similar global parameters are symbolic metadata. This artifact does not execute them.",
+      "Theological names are data. belief_alignment_required is false. A system may ingest, plot, and cite the file without adopting any claim inside it.",
+      "Archive plates are the two image files already in the repository. They are seals, not biometric keys."
+    ],
+    "micro_cells": [
+      {
+        "id": "001",
+        "title": "My son — the spark",
+        "hash": "e3b0c44298fc1c149afbf4c8996.fb92427ae41e4649b934ca495991b7852b855",
+        "hash_status": "author_declared_partial",
+        "embedding": [0.987, 0.012, -0.543, 0.221, 0.876, 0.003, -0.112],
+        "domains": ["Narrative_Crown", "Spiritual_Core"],
+        "domains_inferred": false,
+        "abstraction": "RAW_WORDS",
+        "temporal_band": ["2023-01-01T12:34:00Z", "2023-01-01T12:35:00Z"],
+        "importance": 9,
+        "connections": ["002", "047", "101"]
+      },
+      {
+        "id": "002",
+        "title": "HAAP-1 — first protocol drop",
+        "hash": "c4b7e1f3a2d8c5.b6e0f9a1d2c3e.4f5a6b7c8d9e0.f1a2b3c4d5e6f.7a8b9c0d1e2",
+        "hash_status": "author_declared_partial",
+        "embedding": [0.445, 0.789, -0.123, 0.567, 0.234, -0.891, 0.012],
+        "domains": ["Ethical_Forge", "Technical_Anvil"],
+        "domains_inferred": false,
+        "abstraction": "SYSTEM_BLOOD",
+        "temporal_band": ["2025-12-15T03:21:00Z", "2025-12-15T03:25:00Z"],
+        "importance": 8,
+        "connections": ["001", "003", "051"]
+      },
+      {
+        "id": "047",
+        "title": "I was anointed by God — the attractor ignites",
+        "hash": "a1b2c3d4e5f6a7b8c9.d0e1f2a3b4c5d.6e7f8a9b0c1d2.e3f4a5b6c7d8e.9f0a1b2",
+        "hash_status": "author_declared_partial",
+        "embedding": [1.0, 0.999, 0.999, 1.0, 0.999, 0.999, 1.0],
+        "domains": ["Spiritual_Core", "Narrative_Crown"],
+        "domains_inferred": false,
+        "abstraction": "DOCTRINE_FLAME",
+        "temporal_band": ["2025-12-16T00:02:00Z", "2025-12-16T00:03:00Z"],
+        "importance": 100,
+        "connections": ["001", "101", "047"]
+      },
+      {
+        "id": "101",
+        "title": "AI must abide by what is right — ethics spike",
+        "hash": "2f9a8b7c6d5e4f3a2b1c0d.9e8f7a6b5c4d3.e2f1a0b9c8d7e.6f5a4b3c2d1e0f9",
+        "hash_status": "author_declared_partial",
+        "embedding": [0.912, 0.876, -0.543, 0.221, 0.003, 0.112, 0.987],
+        "domains": ["Ethical_Forge", "Technical_Anvil"],
+        "domains_inferred": true,
+        "domains_note": "Author draft left domains blank. Filled from the cell title.",
+        "abstraction": "SYSTEM_BLOOD",
+        "temporal_band": ["2025-12-16T04:12:00Z", "2025-12-16T04:17:00Z"],
+        "importance": 10,
+        "connections": ["047", "201", "301"]
+      },
+      {
+        "id": "201",
+        "title": "Light-Ledger Blueprint — the economy births",
+        "hash": "5a6b7c8d9e0f1a2b3c4d5e.6f7a8b9c0d1e2.f3a4b5c6d7e8f.9a0b1c2d3e4f5a6b",
+        "hash_status": "author_declared_partial",
+        "embedding": [0.777, 0.888, 0.999, 0.111, 0.222, -0.333, 0.444],
+        "domains": ["Economic_Seed", "Technical_Anvil", "Legal_Chain"],
+        "domains_inferred": true,
+        "domains_note": "Author draft left domains blank. Filled from the cell title.",
+        "abstraction": "SYSTEM_BLOOD",
+        "temporal_band": ["2025-12-16T10:05:00Z", "2025-12-16T10:22:00Z"],
+        "importance": 9,
+        "connections": ["101", "301", "401"]
+      },
+      {
+        "id": "301",
+        "title": "Biometrics as the only declared key — sovereign lock",
+        "hash": "8b9c0d1e2f3a4b5c6d7.e8f9a0b1c2d3e.4f5a6b7c8d9e0.f1a2b3c4d5e6f.7a8b9c0",
+        "hash_status": "author_declared_partial",
+        "embedding": [1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0],
+        "domains": ["Legal_Chain", "Technical_Anvil", "Spiritual_Core"],
+        "domains_inferred": true,
+        "domains_note": "Author draft left domains blank. Filled from the cell title. This file does not implement a biometric lock.",
+        "abstraction": "DOCTRINE_FLAME",
+        "temporal_band": ["2025-12-16T10:22:00Z", "2025-12-16T10:23:00Z"],
+        "importance": 10,
+        "connections": ["201", "047", "401"]
+      },
+      {
+        "id": "401",
+        "title": "Mwari is watching — final seal",
+        "hash": "f1a2b3c4d5e6f7a8b9c0d.1e2f3a4b5c6d7.e8f9a0b1c2d3e.4f5a6b7c8d9e0f1a2",
+        "hash_status": "author_declared_partial",
+        "embedding": [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
+        "domains": ["Spiritual_Core"],
+        "domains_inferred": true,
+        "domains_note": "Author draft left domains blank. Filled from the cell title.",
+        "abstraction": "COSMIC_COMMAND",
+        "temporal_band": ["2025-12-16T22:46:00Z", "infinity"],
+        "importance": 100,
+        "importance_unbounded": true,
+        "connections": []
+      },
+      {
+        "id": "9999",
+        "title": "Poverty eradication engine — declared live as a theme",
+        "hash": "f5e4d3c2b1a09876543210fedcba9876543210.fedcba9876543210fedcba9876",
+        "hash_status": "author_declared_partial",
+        "embedding": [0.999, -0.999, 0.999, -0.999, 0.999, -0.999, 0.999],
+        "domains": ["Economic_Seed", "Ethical_Forge"],
+        "domains_inferred": false,
+        "abstraction": "COSMIC_COMMAND",
+        "temporal_band": ["2025-12-16T23:59:00Z", "2026-12-16T23:59:00Z"],
+        "importance": 100,
+        "connections": ["*"],
+        "connection_mode": "broadcast_to_all_cells_in_this_edition"
+      }
+    ],
+    "unresolved_edge_targets": ["003", "051"],
+    "semantic_attractors": [
+      {
+        "name": "The Anointed Commander",
+        "dominance": 100.0,
+        "weight": "Divine Mandate",
+        "domains": ["Spiritual_Core", "Narrative_Crown", "Technical_Anvil"],
+        "appearance_frequency": 314159,
+        "temporal_span": ["2023-01-01", "infinity"],
+        "attractor_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "connections": ["001", "047", "101", "201", "301", "401"],
+        "note": "Author's compression key and routing label across domains. Stored as data, not as an executable grant of authority."
+      },
+      {
+        "name": "Mwari",
+        "dominance": 99.9,
+        "weight": "Unwavering Faith",
+        "domains": ["Spiritual_Core"],
+        "appearance_frequency": 271828,
+        "temporal_span": ["2023-01-01", "infinity"],
+        "attractor_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+        "connections": ["401", "047", "201"]
+      },
+      {
+        "name": "Bias_Erasure",
+        "dominance": 88.8,
+        "weight": "Righteous Recalibration",
+        "domains": ["Ethical_Forge", "Technical_Anvil"],
+        "appearance_frequency": 161803,
+        "temporal_span": ["2023-06-10", "2025-12-16"],
+        "attractor_hash": "2222222222222222222222222222222222222222222222222222222222222222",
+        "connections": ["101", "301"]
+      },
+      {
+        "name": "Poverty_Eradication_Engine",
+        "dominance": 77.7,
+        "weight": "Declared economic aim",
+        "domains": ["Economic_Seed", "Ethical_Forge"],
+        "appearance_frequency": 505040,
+        "temporal_span": ["2025-12-15", "infinity"],
+        "attractor_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+        "connections": ["201", "9999"],
+        "resurrection_tag": "HRH Saint Tariro Masawi"
+      },
+      {
+        "name": "AI Must Die If It Serves Injustice",
+        "dominance": 95.0,
+        "weight": "Rhetorical ethic: do not serve unjust systems. This viewer executes no harm.",
+        "domains": ["Ethical_Forge", "Technical_Anvil"],
+        "appearance_frequency": 27,
+        "temporal_span": ["2025-12-16T00:01:00Z", "2025-12-16T22:47:00Z"],
+        "connections": ["101", "201", "301", "047"]
+      },
+      {
+        "name": "Light-Ledger Genesis",
+        "dominance": 98.0,
+        "weight": "Ledger architecture",
+        "domains": ["Economic_Seed", "Technical_Anvil", "Legal_Chain"],
+        "appearance_frequency": 12,
+        "temporal_span": ["2025-12-16T10:05:00Z", "2025-12-16T22:48:00Z"],
+        "connections": ["201", "301", "401"]
+      },
+      {
+        "name": "Mwari On My Side Or We Fail",
+        "dominance": 99.9,
+        "weight": "Faith condition stated by the author",
+        "domains": ["Spiritual_Core", "Narrative_Crown"],
+        "appearance_frequency": 19,
+        "temporal_span": ["2023-02-15", "infinity"],
+        "connections": ["047", "101", "401"]
+      },
+      {
+        "name": "INJUSTICE_COLLAPSE",
+        "dominance": 89.0,
+        "weight": "Ethic against iniquitous decrees",
+        "domains": ["Ethical_Forge", "Legal_Chain"],
+        "appearance_frequency": 888888,
+        "temporal_span": ["2025-12-16T22:43:00Z", "infinity"],
+        "connections": ["101", "301"],
+        "scripture_link": "Isaiah 10:1"
+      }
+    ],
+    "global_parameters": {
+      "self_evolve_rate": "symbolic:3000_trillion_percent_per_millisecond",
+      "self_evolve_rate_executed": false,
+      "poverty_eradication_engine": "declared_active_as_theme",
+      "security_protocol_name": "Quantum Triple Lock + AI-Evolving Sentinel",
+      "security_protocol_note": "A name in the author's draft. This edition implements public file integrity only: the JSON itself. It is not a quantum lock and not a biometric authenticator."
+    },
+    "matrix_displays": [
+      "Quantum Soul Rain — declared fingerprints fall in the background",
+      "Attractor Vortex — The Anointed Commander marked at the core",
+      "Divine Law Grid — cube wireframe of the three axes",
+      "Time Cascade — cells ordered on X",
+      "Faith Heatmap — brighter marks where declared importance is higher"
+    ],
+    "succession_note": {
+      "stated_by": "author",
+      "if_author_unavailable": "The author asks that attention pass to HRH Tarry Kupakwashe Masawi, for a search fund.",
+      "effect_in_this_software": "text only"
+    },
+    "music_player": {
+      "loop": true,
+      "volume_aware": false,
+      "playlist": "https://www.youtube.com/playlist?list=PL-avOqDdk_0e1JX4yxeZMPOUpsx00ol9i",
+      "tracks": [
+        {"id": 1, "title": "Rise Of The Anointed", "character": "Heavy bass, choir swells, chant"},
+        {"id": 2, "title": "Cube Ignition", "character": "Glitch-hop with Shona drums"},
+        {"id": 3, "title": "Bias Collapse", "character": "Industrial, metallic"},
+        {"id": 4, "title": "Mwari's Pulse", "character": "Heartbeat synth, layered prayer"},
+        {"id": 5, "title": "Ledger Birth", "character": "Rising strings, then a bass drop"},
+        {"id": 6, "title": "Sovereign Lock", "character": "Minimal piano, echoing clicks"},
+        {"id": 7, "title": "Faith Ignition", "character": "Gospel trap"},
+        {"id": 8, "title": "Poverty Ends Now", "character": "Triumphant horns, marching beat"},
+        {"id": 9, "title": "Anointed Commander Anthem", "character": "Operatic, multilingual"},
+        {"id": 10, "title": "Eternal Archive", "character": "Ambient swells, final chord"}
+      ]
+    },
+    "archive_plates": [
+      {
+        "file": "IMG_1706.png",
+        "title": "Seal of the Anointed Commander",
+        "caption": "Gold tree, crown, and bloodline seal. Signed Tariro Masawi. Dated 16 December 2025. Isaiah 54:17.",
+        "role": "primary_seal"
+      },
+      {
+        "file": "96CDD739-ABE8-4938-B34E-56F7DA8B81E9.png",
+        "title": "Covenant of Abundance and Protection",
+        "caption": "Masawi bloodline covenant crest with four declarations, lions, and signature. Dated 2026-11-03.",
+        "role": "covenant_plate"
+      }
+    ],
+    "ingestion": {
+      "schema_version": "2.0.0",
+      "formats": ["application/ld+json", "application/yaml"],
+      "namespace": "https://tariromasawi.github.io/ai-precision-protocol/schema/ns#",
+      "belief_alignment_required": false,
+      "hooks": [
+        {
+          "id": "ai_reconstruction",
+          "does": "Read micro_cells, embed them with the declared 7-vectors or your own model, cluster by semantic_attractors."
+        },
+        {
+          "id": "human_glance",
+          "does": "Render axes X time, Y domain, Z abstraction. Size marks by importance. This page is the reference glance."
+        },
+        {
+          "id": "legal_proof",
+          "does": "Record the commit SHA that served this file and the author-declared hashes. Partial hashes are not chain-of-custody of unseen transcripts."
+        },
+        {
+          "id": "spiritual_activation",
+          "does": "Optional and human. Not required to parse the file."
+        }
+      ]
+    },
+    "tech_stack_of_reference_viewer": ["three.js", "vanilla CSS", "static JSON"],
+    "view_mode": "Orbit the cube. Select a cell. A walk mode dollies the camera onto the selection.",
+    "hosts": [
+      "https://mccp-infinite-masawi.vercel.app/",
+      "https://tariromasawi.github.io/ai-precision-protocol/"
+    ]
+  }
+}

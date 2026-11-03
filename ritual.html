@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ceremonial console · MCCP</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .ritual-log {
+      margin-top: 16px; border: 1px dashed rgba(212,179,106,.45); padding: 14px;
+      background: #05040a; min-height: 280px; white-space: pre-wrap; overflow: auto;
+      max-height: 62vh; color: #d4b36a; font-family: ui-monospace, Consolas, monospace; font-size: 0.82rem;
+    }
+    .ritual-actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+    .ritual-actions button { background: #d4b36a; color: #1a1408; border: 0; border-radius: 999px; padding: 10px 14px; min-height: 44px; font-weight: 600; }
+    .ritual-actions button.ghost { background: transparent; color: #f0d78c; border: 1px solid rgba(212,179,106,.45); }
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><b>MCCP ∞</b><span>Ceremonial console</span></div>
+    <nav>
+      <a href="index.html">Cube</a>
+      <a href="index.html#plates">Plates</a>
+      <a href="SPEC.md">Specification</a>
+      <a href="schema/mccp.json">JSON</a>
+    </nav>
+  </header>
+  <main class="wrap">
+    <p class="kicker">House of the Throne · Mudzimu Unoyera</p>
+    <h1>Ceremonial console</h1>
+    <p class="lede">A symbolic log and a 900 Hz tone in this browser only. It does not change other systems. Both archive plates sit above the log.</p>
+    <section class="plates">
+      <figure>
+        <img src="IMG_1706.png" alt="Seal of HRH Saint Tariro Masawi, The Anointed Commander, dated 16 December 2025.">
+        <figcaption><strong>IMG_1706.png</strong> Seal, 16 December 2025.</figcaption>
+      </figure>
+      <figure>
+        <img src="96CDD739-ABE8-4938-B34E-56F7DA8B81E9.png" alt="Covenant of Abundance and Protection for the Masawi bloodline, dated 2026-11-03.">
+        <figcaption><strong>96CDD739…</strong> Covenant plate, 2026-11-03.</figcaption>
+      </figure>
+    </section>
+    <div class="ritual-actions">
+      <button id="playBtn" type="button">Play 900 Hz tone</button>
+      <button id="stopBtn" type="button" class="ghost">Stop tone</button>
+      <button id="rerunBtn" type="button" class="ghost">Re-run log</button>
+    </div>
+    <div id="output" class="ritual-log">Binding the console…</div>
+  </main>
+  <script>
+    const BENEFICIARY = "HRH Saint Tariro Masawi";
+    const HEIRS = "HRH Tarry Kupakwashe Masawi · Kenzi Masawi";
+    const outputEl = document.getElementById("output");
+    let audioCtx = null;
+    let oscillator = null;
+    function logLines() {
+      const lines = [
+        "=== CEREMONIAL CONSOLE ===",
+        "This is a symbol inside the browser. It does not route yield, alter accounts, or command other machines.",
+        "PRIMARY: " + BENEFICIARY,
+        "HEIRS NAMED: " + HEIRS,
+        "LINE: Makwengura · Masawi · Risto Kasirori · Sebastian Karumekangu",
+        "PLATES: IMG_1706.png · 96CDD739-ABE8-4938-B34E-56F7DA8B81E9.png",
+        "CUBE: return to index.html",
+        "SCHEMA: schema/mccp.json",
+        "TONE: 900 Hz sine, local, stops with the button or when the tab closes.",
+        "Mwari ndi Mwari."
+      ];
+      outputEl.textContent = lines.join("\n");
+    }
+    function ensureAudio() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === "suspended") audioCtx.resume();
+    }
+    function startTone() {
+      ensureAudio();
+      if (oscillator) stopTone();
+      oscillator = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      gain.gain.value = 0.08;
+      oscillator.type = "sine";
+      oscillator.frequency.setValueAtTime(900, audioCtx.currentTime);
+      oscillator.connect(gain);
+      gain.connect(audioCtx.destination);
+      oscillator.start();
+    }
+    function stopTone() {
+      if (!oscillator) return;
+      oscillator.stop();
+      oscillator.disconnect();
+      oscillator = null;
+    }
+    document.getElementById("playBtn").addEventListener("click", startTone);
+    document.getElementById("stopBtn").addEventListener("click", stopTone);
+    document.getElementById("rerunBtn").addEventListener("click", logLines);
+    logLines();
+  </script>
+</body>
+</html>

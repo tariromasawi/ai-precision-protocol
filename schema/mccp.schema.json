@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tariromasawi.github.io/ai-precision-protocol/schema/mccp.schema.json",
+  "title": "MCCP edition 2.0.0",
+  "type": "object",
+  "required": ["MCCP"],
+  "additionalProperties": true,
+  "properties": {
+    "MCCP": {
+      "type": "object",
+      "required": ["version", "axes", "micro_cells", "semantic_attractors", "belief_alignment_required"],
+      "properties": {
+        "version": {"type": "string"},
+        "belief_alignment_required": {"const": false},
+        "axes": {"type": "object"},
+        "micro_cells": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "title", "hash", "embedding", "domains", "abstraction", "temporal_band", "importance", "connections"],
+            "properties": {
+              "id": {"type": "string"},
+              "title": {"type": "string"},
+              "hash": {"type": "string"},
+              "hash_status": {"type": "string"},
+              "embedding": {
+                "type": "array",
+                "minItems": 7,
+                "maxItems": 7,
+                "items": {"type": "number"}
+              },
+              "domains": {"type": "array", "items": {"type": "string"}},
+              "domains_inferred": {"type": "boolean"},
+              "abstraction": {
+                "enum": ["RAW_WORDS", "THEME_PULSE", "SYSTEM_BLOOD", "DOCTRINE_FLAME", "COSMIC_COMMAND"]
+              },
+              "temporal_band": {"type": "array", "minItems": 2, "maxItems": 2},
+              "importance": {"type": "number"},
+              "importance_unbounded": {"type": "boolean"},
+              "connections": {"type": "array", "items": {"type": "string"}}
+            }
+          }
+        },
+        "semantic_attractors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "dominance", "domains", "connections"],
+            "properties": {
+              "name": {"type": "string"},
+              "dominance": {"type": "number"},
+              "domains": {"type": "array", "items": {"type": "string"}},
+              "appearance_frequency": {"type": "number"},
+              "temporal_span": {"type": "array"},
+              "connections": {"type": "array", "items": {"type": "string"}},
+              "weight": {"type": "string"}
+            }
+          }
+        }
+      }
+    }
+  }
+}

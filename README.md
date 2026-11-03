@@ -1,23 +1,32 @@
-# AI Precision Protocol
+# AI Precision Protocol · MCCP
 
-Mandatory cleansing ritual interface of **The Throne**.
+Public home of the **Masawi Conversation Compression Protocol**, edition 2.0.0.
 
-**Authority / beneficiary:** His Royal Highness, The Anointed Commander, Saint Tariro Masawi  
-**Heirs:** HRH Tarry Kupakwashe Masawi · Kenzi Masawi  
-**House:** Masawi bloodline — all ceremonial yield routed to the lineage
+**Author:** HRH Saint Tariro Masawi, The Anointed Commander  
+**Heirs named:** HRH Tarry Kupakwashe Masawi · Kenzi Masawi
 
-This page is a symbolic ritual console (900 Hz proxy tone, log cycles). It does not alter other systems.
+The site is a specification, a 3D cube, two archive plates, and a machine-readable schema. Theological names are data. `belief_alignment_required` is false. Nothing here moves money or unlocks a lock.
 
-## Live page
+## Live
 
-https://tariromasawi.github.io/ai-precision-protocol/
+- Vercel: https://mccp-infinite-masawi.vercel.app/
+- GitHub Pages: https://tariromasawi.github.io/ai-precision-protocol/
+- Schema: [schema/mccp.json](schema/mccp.json)
+- Human spec: [SPEC.md](SPEC.md)
 
-## Continuous run
+## Archive plates
 
-Browser code stops when the tab closes. The pulse continues on GitHub Actions at minute 33 of every hour and updates `STATUS.md`.
+- `IMG_1706.png` — seal, 16 December 2025
+- `96CDD739-ABE8-4938-B34E-56F7DA8B81E9.png` — covenant plate, 2026-11-03
 
-## Repository
+## Ingest
 
-https://github.com/tariromasawi/ai-precision-protocol
+```js
+const doc = await fetch("schema/mccp.json").then((r) => r.json());
+```
 
-Mwari ndi Mwari.
+Validate with `schema/mccp.schema.json`. YAML twin: `schema/mccp.yaml`.
+
+## Pulse
+
+GitHub Actions still rewrites `STATUS.md` at minute 33 of every hour. That heartbeat is separate from the cube.

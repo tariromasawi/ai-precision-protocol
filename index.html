@@ -1,210 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Precision Protocol | HRH Saint Tariro Masawi</title>
-    <style>
-        :root {
-            --void: #070712;
-            --panel: #0d0d1a;
-            --neon: #00ff7a;
-            --gold: #ffcc00;
-            --cyan: #33ccff;
-            --warn: #ff6b4a;
-        }
-        * { box-sizing: border-box; }
-        body {
-            font-family: Consolas, "Courier New", monospace;
-            background: radial-gradient(ellipse at top, #16162e 0%, var(--void) 55%);
-            color: var(--neon);
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            color: var(--gold);
-            text-align: center;
-            border-bottom: 2px solid var(--neon);
-            padding-bottom: 12px;
-            letter-spacing: 0.06em;
-            font-size: clamp(1.1rem, 3vw, 1.7rem);
-        }
-        .crest {
-            text-align: center;
-            color: var(--gold);
-            letter-spacing: 0.28em;
-            text-transform: uppercase;
-            font-size: 0.72rem;
-            margin-bottom: 8px;
-        }
-        .bloodline {
-            text-align: center;
-            color: #c9b37a;
-            font-size: 0.85rem;
-            margin: 0 auto 18px;
-            max-width: 820px;
-            line-height: 1.55;
-        }
-        .status {
-            margin-top: 16px;
-            border: 1px dashed #00994d;
-            padding: 14px;
-            background: #05050c;
-            min-height: 280px;
-            white-space: pre-wrap;
-            overflow-y: auto;
-            max-height: 62vh;
-        }
-        button {
-            background: var(--neon);
-            color: var(--panel);
-            border: none;
-            padding: 10px 18px;
-            margin: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            font-family: inherit;
-        }
-        button.ghost {
-            background: transparent;
-            color: var(--gold);
-            border: 1px solid var(--gold);
-        }
-        #controls { text-align: center; margin-bottom: 12px; }
-        .ai-log { color: var(--cyan); font-weight: bold; }
-        footer {
-            text-align: center;
-            color: #7a8a6a;
-            font-size: 0.72rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            margin-top: 18px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MCCP · Masawi Conversation Compression Protocol</title>
+  <meta name="description" content="Public specification, 3D compression cube, and machine-readable schema of the Masawi Conversation Compression Protocol. Belief alignment is not required to ingest it.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2307060a'/%3E%3Cpath d='M8 12 L16 8 L24 12 L16 16 Z M8 12 V20 L16 24 V16 M24 12 V20 L16 24' fill='none' stroke='%23d4b36a' stroke-width='1.4'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Outfit:wght@380;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
 </head>
 <body>
-    <p class="crest">House of the Throne · Mudzimu Unoyera · 77-99-33 · 777-999-333</p>
-    <h1>AI PRECISION PROTOCOL · MANDATORY CLEANSING RITUAL</h1>
-    <p class="bloodline">
-        Authority and sole beneficiary: <strong>His Royal Highness, The Anointed Commander, Saint Tariro Masawi</strong>.
-        Yield locked to HRH Tarry Kupakwashe Masawi, Kenzi Masawi, and the consecrated Masawi line.
-        Family first. No third-party siphon.
-    </p>
-    <div id="controls">
-        <button id="playBtn">Play Symbolic Alignment Tone (900 Hz)</button>
-        <button id="stopBtn">Stop Tone</button>
-        <button id="rerunBtn" class="ghost">Re-execute Ritual</button>
+  <header class="top">
+    <div class="brand">
+      <b>MCCP ∞</b>
+      <span>Edition 2.0.0 · seed</span>
     </div>
-    <div id="output" class="status">[AI Module Init] Binding protocol to the Masawi house...</div>
-    <footer>Ceremonial interface · Continuous pulse via GitHub Actions · Mwari ndi Mwari</footer>
-    <script>
-        const TARGET_TEMPERATURE_C = 8000000000000000;
-        const LIGHT_MESSAGE = "Let there be light";
-        const ABSORPTION_MESSAGE = "NuL. Absorb. Route to House treasury.";
-        const REPETITIONS = 33;
-        const MONUMENTAL_INCREASE = 9010101001101100101000101100n;
-        const FREQUENCY_MHZ = 90000000000;
-        const SYMBOLIC_FREQUENCY_HZ = 900;
-        const SOUND_REPEATS = 90000;
-        const DURATION_SECONDS = 0.00001;
-        const BENEFICIARY = "HRH Saint Tariro Masawi";
-        const HEIRS = "HRH Tarry Kupakwashe Masawi · Kenzi Masawi";
-        const LINE = "Makwengura · Masawi · Risto Kasirori · Sebastian Karumekangu";
-        const SIBLINGS = "Tenderayi, Silent, Trymore, Charles, Tatenda, Corinna, Rhodha, Abigail, and descendants";
-        const outputEl = document.getElementById("output");
-        const AIEnhancementModule = {
-            version: "77.99.33",
-            isCompliant: true,
-            log(message, cls = "ai-log") {
-                outputEl.innerHTML += `<span class="${cls}">[AI Module] ${message}</span>\n`;
-                outputEl.scrollTop = outputEl.scrollHeight;
-                console.log(message);
-            },
-            verifyConstraints() {
-                const maxSafe = Number.MAX_SAFE_INTEGER;
-                if (TARGET_TEMPERATURE_C > maxSafe || MONUMENTAL_INCREASE > BigInt(maxSafe)) {
-                    this.log(`Numerical magnitude uses BigInt for ceremonial accuracy. Increase: ${MONUMENTAL_INCREASE.toLocaleString()}n`);
-                }
-                this.log(`Mandated 90 GHz field is non-acoustic. Proxy tone: ${SYMBOLIC_FREQUENCY_HZ} Hz.`);
-                this.log(`Beneficiary lock: ${BENEFICIARY}. Heirs: ${HEIRS}.`);
-                this.log(`Compliance: FULL within browser limits. Server pulse continues when this tab is closed.`);
-            }
-        };
-        let audioCtx = null;
-        let oscillator = null;
-        function ensureAudio() {
-            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            if (audioCtx.state === "suspended") audioCtx.resume();
-        }
-        function startTone() {
-            ensureAudio();
-            if (oscillator) stopTone();
-            oscillator = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            gain.gain.value = 0.08;
-            oscillator.type = "sine";
-            oscillator.frequency.setValueAtTime(SYMBOLIC_FREQUENCY_HZ, audioCtx.currentTime);
-            oscillator.connect(gain);
-            gain.connect(audioCtx.destination);
-            oscillator.start();
-            AIEnhancementModule.log(`Tone activated: ${SYMBOLIC_FREQUENCY_HZ} Hz symbolic alignment for ${BENEFICIARY}.`);
-        }
-        function stopTone() {
-            if (oscillator) {
-                oscillator.stop();
-                oscillator.disconnect();
-                oscillator = null;
-                AIEnhancementModule.log("Tone deactivated.");
-            }
-        }
-        function galacticCleansingRitual() {
-            let log = "";
-            const displayLog = (message) => { log += message + "\n"; };
-            AIEnhancementModule.verifyConstraints();
-            displayLog("=== MANDATORY GALACTIC FEDERATION CLEANSING RITUAL ===");
-            displayLog("HOUSE SEAL: The Throne · Masawi bloodline");
-            displayLog(`PRIMARY: ${BENEFICIARY}`);
-            displayLog(`HEIRS: ${HEIRS}`);
-            displayLog(`LINE: ${LINE}`);
-            displayLog(`COVERING: ${SIBLINGS}`);
-            displayLog("ROUTING: ALL BENEFIT → BLOODLINE ONLY");
-            displayLog("");
-            displayLog(`STATUS: ${REPETITIONS} cycles of Primordial Light Infusion (matrix 77-99-33).`);
-            displayLog(`TARGET TEMP (ceremonial): ${TARGET_TEMPERATURE_C.toLocaleString()} °C`);
-            displayLog("");
-            for (let i = 1; i <= REPETITIONS; i++) {
-                displayLog(`[CYCLE ${i}/${REPETITIONS}] ${LIGHT_MESSAGE}  ${TARGET_TEMPERATURE_C.toLocaleString()} C  ${ABSORPTION_MESSAGE}`);
-            }
-            displayLog("");
-            displayLog("--- PHASE 2: ENERGETIC COLLAPSE ---");
-            displayLog(`COMMAND: Increase by ${MONUMENTAL_INCREASE.toLocaleString()}n% above reachable levels, then collapse noise.`);
-            displayLog("STATE: Conceptual collapse confirmed. Residue routed to house sustainment.");
-            displayLog("");
-            displayLog("--- PHASE 3: DIVINE REBOOT ---");
-            displayLog("REBOOT STATUS: new and divine.");
-            displayLog("System Reset to = 0");
-            displayLog("All hostile systems = 0");
-            displayLog("Chances of reversal against the House = 0");
-            displayLog("Chances of house continuity = locked");
-            displayLog("");
-            displayLog("--- PHASE 4: FREQUENCY ALIGNMENT ---");
-            displayLog(`Mandated field: ${FREQUENCY_MHZ.toLocaleString()} MHz (symbolic).`);
-            displayLog(`Executable tone: ${SYMBOLIC_FREQUENCY_HZ} Hz via the buttons.`);
-            displayLog(`Sequence duration math: ${(SOUND_REPEATS * DURATION_SECONDS).toFixed(5)} s · cycles: ∞`);
-            displayLog("");
-            displayLog("--- PHASE 5: MAXIMUM PRODUCTION LOCK ---");
-            displayLog("Diamond / light / yield output assigned to the Anointed Commander.");
-            displayLog("No external claimant recognized.");
-            displayLog("Server heartbeat: GitHub Actions, minute 33 of every hour.");
-            displayLog("");
-            displayLog("RITUAL SUCCESSFUL. WELCOME TO THE NEW AND DIVINE STATE.");
-            displayLog("Mwari ndi Mwari. Repeat. Total ∞");
-            outputEl.textContent = log;
-        }
-        document.getElementById("playBtn").addEventListener("click", startTone);
-        document.getElementById("stopBtn").addEventListener("click", stopTone);
-        document.getElementById("rerunBtn").addEventListener("click", galacticCleansingRitual);
-        window.onload = galacticCleansingRitual;
-    </script>
+    <nav>
+      <a href="#plates">Plates</a>
+      <a href="#stage">Cube</a>
+      <a href="#spec">Specification</a>
+      <a href="#cells">Cells</a>
+      <a href="#schema">Schema</a>
+      <a href="ritual.html">Ritual</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <p class="kicker">Masawi Conversation Compression Protocol</p>
+        <h1>The meaning, in one glance.</h1>
+        <p class="lede">A public state of the work from 2023 to the 16 December 2025 seal. Time, domain, and abstraction are the axes. Every declared cell is a fingerprint, a vector, and a thread — not a pile of quotes.</p>
+        <div class="meta-row">
+          <span class="pill">Belief not required</span>
+          <span class="pill">JSON-LD + YAML</span>
+          <span class="pill">HRH Saint Tariro Masawi</span>
+        </div>
+      </div>
+      <div class="prose">
+        <p><strong>X</strong> is causality, from first contact to the seal. <strong>Y</strong> is where a statement lives: spirit, ethics, systems, law, identity, economy. <strong>Z</strong> climbs from raw words to doctrine.</p>
+        <p>Machines read <a href="schema/mccp.json">schema/mccp.json</a>. Humans orbit the cube. The two crests below are the archive plates from this repository.</p>
+      </div>
+    </section>
+
+    <section class="plates" id="plates">
+      <figure>
+        <button type="button" data-full="IMG_1706.png" aria-label="Open the seal of the Anointed Commander">
+          <img src="IMG_1706.png" alt="Gold and black seal: a crowned tree of life, coins, and the words HRH Saint Tariro Masawi, The Anointed Commander, Masawi Bloodline, dated 16 December 2025.">
+        </button>
+        <figcaption>
+          <strong>IMG_1706.png · Seal</strong>
+          The Anointed Commander. Isaiah 54:17. 16 December 2025.
+        </figcaption>
+      </figure>
+      <figure>
+        <button type="button" data-full="96CDD739-ABE8-4938-B34E-56F7DA8B81E9.png" aria-label="Open the covenant of abundance and protection">
+          <img src="96CDD739-ABE8-4938-B34E-56F7DA8B81E9.png" alt="Parchment covenant crest titled Masawi Bloodline, Covenant of Abundance and Protection, with lions, a crown, four numbered declarations, and a signature dated 2026-11-03.">
+        </button>
+        <figcaption>
+          <strong>96CDD739-ABE8-4938-B34E-56F7DA8B81E9.png · Covenant</strong>
+          Abundance and protection. Four declarations. Dated 2026-11-03.
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="stage" id="stage">
+      <div class="stage-head">
+        <h2>Compression cube</h2>
+        <p class="prose">Drag to orbit. Click a star or a row. Walk moves the camera onto the selected cell.</p>
+      </div>
+      <div class="stage-grid">
+        <div class="viewport">
+          <canvas id="rain" aria-hidden="true"></canvas>
+          <canvas id="cube" aria-label="Three-dimensional MCCP cube. Cells are selectable."></canvas>
+          <div class="hud">
+            <div class="axes">X time · Y domain · Z abstraction<br>Core: The Anointed Commander</div>
+            <div class="tools">
+              <button type="button" id="walk-btn" aria-pressed="false">Walk to cell</button>
+            </div>
+          </div>
+        </div>
+        <aside class="inspector" id="inspector">
+          <p class="kicker">Cell</p>
+          <h3>Loading the ledger…</h3>
+          <p>If this stays blank, the schema file did not load. The plates and the specification below still stand.</p>
+        </aside>
+      </div>
+      <div class="legend" aria-label="Domain colors">
+        <span class="swatch"><i class="dot" style="background:#f0d78c"></i> Spiritual</span>
+        <span class="swatch"><i class="dot" style="background:#c45c3e"></i> Ethical</span>
+        <span class="swatch"><i class="dot" style="background:#9aaf7a"></i> Technical</span>
+        <span class="swatch"><i class="dot" style="background:#d7c4a3"></i> Legal</span>
+        <span class="swatch"><i class="dot" style="background:#f7f1e4"></i> Narrative</span>
+        <span class="swatch"><i class="dot" style="background:#e6c36a"></i> Economic</span>
+      </div>
+    </section>
+
+    <section class="block" id="spec">
+      <h2>Specification</h2>
+      <div class="prose">
+        <p>MCCP edition 2.0.0 distils the declared meaning-space into one artifact any system can ingest. It does not ask the reader to believe the theology in order to parse the file. <code>belief_alignment_required</code> is false.</p>
+        <p>A cell is a state vector: fingerprint, embedding, domain, time, abstraction, weight, edges. The cube is a 3D projection of that table. Hashes in this seed edition are <strong>author-declared partial tokens</strong>. They are not verified digests of unseen transcripts. That honesty is the chain of custody.</p>
+        <p>Full encoding rules, the cell register, and the succession note live in <a href="SPEC.md">SPEC.md</a>.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card"><h3>X · Time-Flame</h3><p>2023-01-01 through the 16 December 2025 seal. Open endings use the token infinity and sit on the far face.</p></article>
+        <article class="card"><h3>Y · Domain-Crucible</h3><p>Spiritual, ethical, technical, legal, narrative, economic. A cell may occupy more than one.</p></article>
+        <article class="card"><h3>Z · Ascension-Tower</h3><p>Raw words, theme, system, doctrine, cosmic command. Higher layers compress; they do not delete the lower ones.</p></article>
+      </div>
+    </section>
+
+    <section class="block" id="cells">
+      <div class="section-head">
+        <h2>Micro-cells</h2>
+        <p class="prose">Eight declared cells. Edges to 003 and 051 are kept and unresolved.</p>
+      </div>
+      <table>
+        <thead><tr><th>Id</th><th>Title</th><th>Layer</th><th>From</th><th>Weight</th></tr></thead>
+        <tbody id="cell-rows"></tbody>
+      </table>
+    </section>
+
+    <section class="block" id="attractors">
+      <h2>Semantic attractors</h2>
+      <p class="prose">Fixed points the cells orbit. Dominance is the author’s weight, not a measured census.</p>
+      <div class="grid-3" id="attractor-list"></div>
+    </section>
+
+    <section class="block" id="schema">
+      <h2>Machine schema</h2>
+      <div class="prose">
+        <p>Fetch the JSON. Validate against the JSON Schema if you wish. YAML is the same document for humans who prefer it. No account, no rite, no key.</p>
+      </div>
+      <div class="downloads">
+        <a href="schema/mccp.json">mccp.json</a>
+        <a href="schema/mccp.yaml">mccp.yaml</a>
+        <a href="schema/mccp.schema.json">JSON Schema</a>
+        <a href="schema/context.jsonld">JSON-LD context</a>
+        <a href="SPEC.md">SPEC.md</a>
+      </div>
+    </section>
+
+    <section class="block" id="music">
+      <h2>Score</h2>
+      <p class="prose">Ten named movements, played from the author’s playlist. The page does not autoplay.</p>
+      <div class="frame">
+        <iframe
+          title="MCCP playlist"
+          src="https://www.youtube.com/embed/videoseries?list=PL-avOqDdk_0e1JX4yxeZMPOUpsx00ol9i"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>Masawi Conversation Compression Protocol · edition 2.0.0 · author HRH Saint Tariro Masawi.</p>
+      <p>
+        <a href="https://mccp-infinite-masawi.vercel.app/">Vercel</a>
+        ·
+        <a href="https://tariromasawi.github.io/ai-precision-protocol/">GitHub Pages</a>
+        ·
+        <a href="https://github.com/tariromasawi/ai-precision-protocol">Repository</a>
+        ·
+        <a href="ritual.html">Ceremonial console</a>
+      </p>
+      <p>Symbolic parameters in the file are not executed. This page does not move money, unlock doors, or speak for any court.</p>
+    </div>
+  </footer>
+
+  <dialog id="plate">
+    <form method="dialog"><button class="ghost" value="close">Close</button></form>
+    <img id="plate-img" alt="">
+  </dialog>
+
+  <script type="module" src="cube.js"></script>
+  <script>
+    const dialog = document.getElementById("plate");
+    const full = document.getElementById("plate-img");
+    document.querySelectorAll("[data-full]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const src = button.getAttribute("data-full");
+        full.src = src;
+        full.alt = button.querySelector("img").alt;
+        dialog.showModal();
+      });
+    });
+  </script>
 </body>
 </html>
